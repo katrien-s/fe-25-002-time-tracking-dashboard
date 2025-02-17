@@ -30,7 +30,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github](https://github.com/katrien-s/fe-25-002-time-tracking-dashboard)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Netlify](https://fe-25-002-time-tracking-dashboard.netlify.app/)
 
 ## My process
 
