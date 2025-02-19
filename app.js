@@ -7,6 +7,8 @@ const getPreviousLabel = (timeframe) => {
 	if (timeframe === 'monthly') return 'Last Month';
 };
 
+let currentTimeframe = 'weekly';
+
 const loadCards = () => {
 	fetch('/data.json')
 		.then((response) => {
@@ -14,21 +16,20 @@ const loadCards = () => {
 			return response.json();
 		})
 		.then((data) => {
-			let currentTimeframe = 'weekly';
 			renderCards(data, currentTimeframe);
-
-			timeButtons.forEach((button) => {
-				button.addEventListener('click', () => {
-					timeButtons.forEach((btn) => btn.classList.remove('active'));
-					button.classList.add('active');
-
-					currentTimeframe = button.textContent.toLowerCase();
-					renderCards(data, currentTimeframe);
-				});
-			});
 		})
 		.catch((error) => console.error(error));
 };
+
+timeButtons.forEach((button) => {
+	button.addEventListener('click', () => {
+		timeButtons.forEach((btn) => btn.classList.remove('active'));
+		button.classList.add('active');
+
+		currentTimeframe = button.textContent.toLowerCase();
+		loadCards(currentTimeframe);
+	});
+});
 
 const renderCards = (data, timeframe) => {
 	cardSection.innerHTML = '';
